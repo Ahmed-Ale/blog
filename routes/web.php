@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ThemeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::controller(ThemeController::class)->name('theme')->group(function () {
+    Route::get('/index', 'index')->name('index');
+});
+
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
