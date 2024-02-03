@@ -1,25 +1,11 @@
 @extends('theme.master')
 
 @section('title', 'Remake Barber - Category')
+@section('category-active', 'active')
 
 @section('content')
-    <!--================ Hero sm Banner start =================-->
-    <section class="mb-30px">
-        <div class="container">
-            <div class="hero-banner hero-banner--sm">
-                <div class="hero-banner__content">
-                    <h1>Category Page</h1>
-                    <nav aria-label="breadcrumb" class="banner-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Category Page</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ Hero sm Banner end =================-->
+
+    @include('theme.partials.hero', ['heroTitle' => 'Category Page'])
 
 
     <!--================ Start Blog Post Area =================-->
@@ -31,8 +17,8 @@
                         <div class="col-md-6">
                             <div class="single-recent-blog-post card-view">
                                 <div class="thumb">
-                                    <img class="card-img rounded-0"
-                                        src="{{ asset('assets/img') }}/blog/thumb/thumb-card1.png" alt="">
+                                    <img class="card-img rounded-0" src="{{ asset('assets/img') }}/blog/thumb/thumb-card1.png"
+                                        alt="">
                                     <ul class="thumb-info">
                                         <li><a href="#"><i class="ti-user"></i>Admin</a></li>
                                         <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
@@ -198,65 +184,77 @@
                         </div>
                     </div>
 
-                    <!-- <div class="single-recent-blog-post">
-                    <div class="thumb">
-                      <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog2.png" alt="">
-                      <ul class="thumb-info">
-                        <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                        <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                        <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                      </ul>
+                    <div class="single-recent-blog-post">
+                        <div class="thumb">
+                            <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog2.png" alt="">
+                            <ul class="thumb-info">
+                                <li><a href="#"><i class="ti-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
+                                <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                            </ul>
+                        </div>
+                        <div class="details mt-20">
+                            <a href="blog-single.html">
+                                <h3>Woman claims husband wants to name baby girl
+                                    after his ex-lover sparking.</h3>
+                            </a>
+                            <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life
+                                    style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
+                            <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser
+                                cattle were fruitful lights. Given let have, lesser their made him above gathered dominion
+                                sixth. Creeping deep said can't called second. Air created seed heaven sixth created living
+                            </p>
+                            <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                        </div>
                     </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h3>Woman claims husband wants to name baby girl
-                          after his ex-lover sparking.</h3>
-                      </a>
-                      <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
-                      <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep said can't called second. Air created seed heaven sixth created living</p>
-                      <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                    </div>
-                  </div>
 
-                  <div class="single-recent-blog-post">
-                    <div class="thumb">
-                      <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog3.png" alt="">
-                      <ul class="thumb-info">
-                        <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                        <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                        <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                      </ul>
+                    <div class="single-recent-blog-post">
+                        <div class="thumb">
+                            <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog3.png" alt="">
+                            <ul class="thumb-info">
+                                <li><a href="#"><i class="ti-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
+                                <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                            </ul>
+                        </div>
+                        <div class="details mt-20">
+                            <a href="blog-single.html">
+                                <h3>Tourist deaths in Costa Rica jeopardize safe dest
+                                    ination reputation all time. </h3>
+                            </a>
+                            <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life
+                                    style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
+                            <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser
+                                cattle were fruitful lights. Given let have, lesser their made him above gathered dominion
+                                sixth. Creeping deep said can't called second. Air created seed heaven sixth created living
+                            </p>
+                            <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                        </div>
                     </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h3>Tourist deaths in Costa Rica jeopardize safe dest
-                          ination reputation all time. </h3>
-                      </a>
-                      <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
-                      <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep said can't called second. Air created seed heaven sixth created living</p>
-                      <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                    </div>
-                  </div>
 
-                  <div class="single-recent-blog-post">
-                    <div class="thumb">
-                      <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog4.png" alt="">
-                      <ul class="thumb-info">
-                        <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                        <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
-                        <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                      </ul>
+                    <div class="single-recent-blog-post">
+                        <div class="thumb">
+                            <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog4.png" alt="">
+                            <ul class="thumb-info">
+                                <li><a href="#"><i class="ti-user"></i>Admin</a></li>
+                                <li><a href="#"><i class="ti-notepad"></i>January 12,2019</a></li>
+                                <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                            </ul>
+                        </div>
+                        <div class="details mt-20">
+                            <a href="blog-single.html">
+                                <h3>Tourist deaths in Costa Rica jeopardize safe dest
+                                    ination reputation all time. </h3>
+                            </a>
+                            <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life
+                                    style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
+                            <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser
+                                cattle were fruitful lights. Given let have, lesser their made him above gathered dominion
+                                sixth. Creeping deep said can't called second. Air created seed heaven sixth created living
+                            </p>
+                            <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                        </div>
                     </div>
-                    <div class="details mt-20">
-                      <a href="blog-single.html">
-                        <h3>Tourist deaths in Costa Rica jeopardize safe dest
-                          ination reputation all time.  </h3>
-                      </a>
-                      <p class="tag-list-inline">Tag: <a href="#">travel</a>, <a href="#">life style</a>, <a href="#">technology</a>, <a href="#">fashion</a></p>
-                      <p>Over yielding doesn't so moved green saw meat hath fish he him from given yielding lesser cattle were fruitful lights. Given let have, lesser their made him above gathered dominion sixth. Creeping deep said can't called second. Air created seed heaven sixth created living</p>
-                      <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                    </div>
-                  </div> -->
 
 
 
@@ -286,112 +284,7 @@
                     </div>
                 </div>
 
-                <!-- Start Blog Post Siddebar -->
-                <div class="col-lg-4 sidebar-widgets">
-                    <div class="widget-wrap">
-                        <div class="single-sidebar-widget newsletter-widget">
-                            <h4 class="single-sidebar-widget__title">Newsletter</h4>
-                            <div class="form-group mt-30">
-                                <div class="col-autos">
-                                    <input type="text" class="form-control" id="inlineFormInputGroup"
-                                        placeholder="Enter email" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'">
-                                </div>
-                            </div>
-                            <button class="bbtns d-block mt-20 w-100">Subcribe</button>
-                        </div>
-
-                        <div class="single-sidebar-widget post-category-widget">
-                            <h4 class="single-sidebar-widget__title">Catgory</h4>
-                            <ul class="cat-list mt-20">
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Technology</p>
-                                        <p>(03)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Software</p>
-                                        <p>(09)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Lifestyle</p>
-                                        <p>(12)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Shopping</p>
-                                        <p>(02)</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>Food</p>
-                                        <p>(10)</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="single-sidebar-widget popular-post-widget">
-                            <h4 class="single-sidebar-widget__title">Recent Post</h4>
-                            <div class="popular-post-list">
-                                <div class="single-post-list">
-                                    <div class="thumb">
-                                        <img class="card-img rounded-0"
-                                            src="{{ asset('assets/img') }}/blog/thumb/thumb1.png" alt="">
-                                        <ul class="thumb-info">
-                                            <li><a href="#">Adam Colinge</a></li>
-                                            <li><a href="#">Dec 15</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="details mt-20">
-                                        <a href="blog-single.html">
-                                            <h6>Accused of assaulting flight attendant miktake alaways</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="single-post-list">
-                                    <div class="thumb">
-                                        <img class="card-img rounded-0"
-                                            src="{{ asset('assets/img') }}/blog/thumb/thumb2.png" alt="">
-                                        <ul class="thumb-info">
-                                            <li><a href="#">Adam Colinge</a></li>
-                                            <li><a href="#">Dec 15</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="details mt-20">
-                                        <a href="blog-single.html">
-                                            <h6>Tennessee outback steakhouse the
-                                                worker diagnosed</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="single-post-list">
-                                    <div class="thumb">
-                                        <img class="card-img rounded-0"
-                                            src="{{ asset('assets/img') }}/blog/thumb/thumb3.png" alt="">
-                                        <ul class="thumb-info">
-                                            <li><a href="#">Adam Colinge</a></li>
-                                            <li><a href="#">Dec 15</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="details mt-20">
-                                        <a href="blog-single.html">
-                                            <h6>Tennessee outback steakhouse the
-                                                worker diagnosed</h6>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Blog Post Siddebar -->
+                @include('theme.partials.sidebar')
             </div>
     </section>
     <!--================ End Blog Post Area =================-->

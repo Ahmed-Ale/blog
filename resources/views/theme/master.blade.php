@@ -8,7 +8,7 @@
 
 @yield('content')
 
-    @include('theme.partials.footer')
+@include('theme.partials.footer')
 
 
 @include('theme.partials.scripts')
