@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,7 @@ Route::get('/master', function () {
     return view('theme.master');
 });
 
-
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
 
 
