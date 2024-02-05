@@ -54,7 +54,8 @@
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <li class="nav-item">
-                                                <a class="nav-link" href="javascript:$('form').submit();">Logout</a>
+                                                <a class="nav-link"
+                                                    onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
                                             </li>
                                         </form>
                                     </ul>

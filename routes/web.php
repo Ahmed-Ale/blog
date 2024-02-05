@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Contact;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +31,7 @@ Route::get('/master', function () {
 
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
+Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
 
 // Route::get('/', function () {
