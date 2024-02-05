@@ -28,15 +28,17 @@
                             </div>
 
                             <div class="single-sidebar-widget post-category-widget">
-                                <h4 class="single-sidebar-widget__title">Catgory</h4>
+                                <h4 class="single-sidebar-widget__title">Category</h4>
                                 <ul class="cat-list mt-20">
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Technology</p>
-                                            <p>(03)</p>
-                                        </a>
-                                    </li>
-                                    <li>
+                                    @foreach ($categories as $category)
+                                        <li>
+                                            <a href="#" class="d-flex justify-content-between">
+                                                <p>{{ $category->name }}</p>
+                                                <p>(03)</p>
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                    {{-- <li>
                                         <a href="#" class="d-flex justify-content-between">
                                             <p>Software</p>
                                             <p>(09)</p>
@@ -59,7 +61,7 @@
                                             <p>Food</p>
                                             <p>(10)</p>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
 

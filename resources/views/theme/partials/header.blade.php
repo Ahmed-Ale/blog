@@ -23,12 +23,17 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false">Categories</a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Food</a></li>
-                                    <li class="nav-item"><a class="nav-link"
+                                    @foreach ($headerCategories as $headerCategory)
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="{{ route('theme.category') }}">{{ $headerCategory->name }}</a>
+                                        </li>
+                                    @endforeach
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('theme.category') }}">More
+                                            Categories</a></li>
+                                    {{-- <li class="nav-item"><a class="nav-link"
                                             href="{{ route('theme.category') }}">Bussiness</a></li>
                                     <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Travel</a></li>
+                                            href="{{ route('theme.category') }}">Travel</a></li> --}}
                                 </ul>
                             </li>
                             <li class="nav-item @yield('contact-active')"><a class="nav-link"
