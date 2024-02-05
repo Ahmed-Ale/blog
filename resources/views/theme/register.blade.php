@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-12">
                     <form action="{{ route('register.post') }}" method="POST" class="form-contact contact_form"
-                        action="contact_process.php" id="contactForm" novalidate="novalidate">
+                        id="contactForm" novalidate="novalidate">
                         @csrf
                         <div class="row">
                             <div class="col-6">

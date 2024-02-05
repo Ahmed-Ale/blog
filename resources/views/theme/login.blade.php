@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-6 mx-auto">
                     <form action="{{ route('login.post') }}" method="POST" class="form-contact contact_form"
-                        action="contact_process.php" id="contactForm" novalidate="novalidate">
+                        id="contactForm" novalidate="novalidate">
                         @csrf
                         <div class="form-group">
                             <input class="form-control border" value="{{ old('email') }}" name="email" id="email"

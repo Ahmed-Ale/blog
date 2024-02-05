@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(ThemeController::class)->name('theme.')->group(function () {
-    Route::get('/index', 'index')->name('index');
+    Route::get('/', 'index')->name('index');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/category', 'category')->name('category');
     Route::get('/single-blog', 'singleBlog')->name('singleBlog');
-    Route::get('/login', 'login')->name('login');
-    Route::get('/register', 'register')->name('register');
 });
 Route::get('/master', function () {
     return view('theme.master');
@@ -31,9 +29,9 @@ Route::get('/master', function () {
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
