@@ -42,7 +42,7 @@
                         </ul>
 
                         <!-- Add new blog -->
-                        <a href="#" class="btn btn-sm btn-primary mr-2">Add New</a>
+                        <a href="{{ route('blog.create') }}" class="btn btn-sm btn-primary mr-2">Add New</a>
                         <!-- End - Add new blog -->
 
                         <ul class="nav navbar-nav navbar-right navbar-social ml-2">

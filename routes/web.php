@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
@@ -32,6 +33,8 @@ Route::get('/master', function () {
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
+
+Route::resource('/blog', BlogController::class);
 
 
 // Route::get('/', function () {
