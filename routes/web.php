@@ -24,7 +24,7 @@ Route::controller(ThemeController::class)->name('theme.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/category/{name}', 'category')->name('category');
-    Route::get('/single-blog/{title}', 'singleBlog')->name('singleBlog');
+    // Route::get('/single-blog/{id}', 'singleBlog')->name('singleBlog');
 });
 Route::get('/master', function () {
     return view('theme.master');
@@ -44,8 +44,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::resource('/blog', BlogController::class);
 Route::middleware('auth')->group(function () {
-    Route::resource('/blog', BlogController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

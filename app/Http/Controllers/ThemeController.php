@@ -23,8 +23,9 @@ class ThemeController extends Controller
         $blogs = Blog::where('category_id', $category)->paginate(8);
         return view('theme.category', compact('blogs', 'name'));
     }
-    public function  singleBlog()
+    public function  singleBlog($id)
     {
-        return view('theme.single-blog');
+        $blog = Blog::find($id)->first();
+        return view('theme.single-blog',compact('blog'));
     }
 }

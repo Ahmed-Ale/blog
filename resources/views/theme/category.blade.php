@@ -32,7 +32,7 @@
                                                 <h3>{{ $blog->title }}</h3>
                                             </a>
                                             <p>{{ $blog->description }}</p>
-                                            <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                                            <a class="button" href="{{ route('blog.show', ['blog' => $blog]) }}">Read More <i class="ti-arrow-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
