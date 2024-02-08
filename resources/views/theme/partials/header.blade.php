@@ -23,13 +23,11 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                     aria-haspopup="true" aria-expanded="false">Categories</a>
                                 <ul class="dropdown-menu">
-                                    @foreach ($headerCategories as $headerCategory)
+                                    @foreach ($categories as $category)
                                         <li class="nav-item"><a class="nav-link"
-                                                href="{{ route('theme.category') }}">{{ $headerCategory->name }}</a>
+                                                href="{{ route('theme.category', ['name' => $category->name]) }}">{{ $category->name }}</a>
                                         </li>
                                     @endforeach
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('theme.category') }}">More
-                                            Categories</a></li>
                                     {{-- <li class="nav-item"><a class="nav-link"
                                             href="{{ route('theme.category') }}">Bussiness</a></li>
                                     <li class="nav-item"><a class="nav-link"

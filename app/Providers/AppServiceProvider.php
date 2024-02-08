@@ -21,15 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $categories = Category::get();
-        $headerCategories = Category::take(2)->get();
-
-        $blogs = Blog::paginate(4);
-
+        $categories = Category::withCount('blogs')->get();
         view()->share([
             'categories' => $categories,
-            'headerCategories' => $headerCategories,
-            'blogs' => $blogs,
         ]);
     }
 }

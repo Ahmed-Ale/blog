@@ -5,7 +5,7 @@
 
 @section('content')
 
-    @include('theme.partials.hero', ['heroTitle' => 'Category Page'])
+    @include('theme.partials.hero', ['heroTitle' => $name])
 
 
     <!--================ Start Blog Post Area =================-->
@@ -14,28 +14,31 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="single-recent-blog-post card-view">
-                                <div class="thumb">
-                                    <img class="card-img rounded-0" src="{{ asset('assets/img') }}/blog/thumb/thumb-card1.png"
-                                        alt="">
-                                    <ul class="thumb-info">
-                                        <li><a href="#"><i class="ti-user"></i>Admin</a></li>
-                                        <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
-                                    </ul>
+                        @if (isset($blogs))
+                            @foreach ($blogs as $blog)
+                                <div class="col-md-6">
+                                    <div class="single-recent-blog-post card-view">
+                                        <div class="thumb">
+                                            <img class="card-img rounded-0" src="{{ asset("storage/blogs/{$blog->image}") }}"
+                                                alt="{{ $blog->title }}">
+                                            <ul class="thumb-info">
+                                                <li><a href="#"><i class="ti-user"></i>{{ $blog->user->name }}</a>
+                                                </li>
+                                                <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="details mt-20">
+                                            <a href="blog-single.html">
+                                                <h3>{{ $blog->title }}</h3>
+                                            </a>
+                                            <p>{{ $blog->description }}</p>
+                                            <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="details mt-20">
-                                    <a href="blog-single.html">
-                                        <h3>Fast cars and rickety bridges as
-                                            he grand tour returns</h3>
-                                    </a>
-                                    <p>Vel aliquam quis, nulla pede mi commodo no tristique nam hac luctus torquent
-                                        velit felis lone commodo pellentesque</p>
-                                    <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                            @endforeach
+                        @endif
+                        {{-- <div class="col-md-6">
                             <div class="single-recent-blog-post card-view">
                                 <div class="thumb">
                                     <img class="card-img rounded-0"
@@ -181,10 +184,10 @@
                                     <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
-                    <div class="single-recent-blog-post">
+                    {{-- <div class="single-recent-blog-post">
                         <div class="thumb">
                             <img class="img-fluid" src="{{ asset('assets/img') }}/blog/blog2.png" alt="">
                             <ul class="thumb-info">
@@ -254,34 +257,17 @@
                             </p>
                             <a class="button" href="#">Read More <i class="ti-arrow-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
 
 
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <nav class="blog-pagination justify-content-center d-flex">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Previous">
-                                            <span aria-hidden="true">
-                                                <i class="ti-angle-left"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item">
-                                        <a href="#" class="page-link" aria-label="Next">
-                                            <span aria-hidden="true">
-                                                <i class="ti-angle-right"></i>
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                    @if (isset($blogs))
+                        <div class="row">
+                            <div class="col-lg-12">
+                                {{ $blogs->render('pagination::bootstrap-5') }}
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
                 @include('theme.partials.sidebar')
