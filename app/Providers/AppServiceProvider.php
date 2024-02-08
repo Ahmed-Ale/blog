@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,9 +23,13 @@ class AppServiceProvider extends ServiceProvider
     {
         $categories = Category::get();
         $headerCategories = Category::take(2)->get();
+
+        $blogs = Blog::paginate(4);
+
         view()->share([
             'categories' => $categories,
             'headerCategories' => $headerCategories,
+            'blogs' => $blogs,
         ]);
     }
 }

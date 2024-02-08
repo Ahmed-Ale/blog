@@ -44,6 +44,9 @@
                         <!-- Add new blog -->
                         @if (Auth::check())
                             <a href="{{ route('blog.create') }}" class="btn btn-sm btn-primary mr-2">Add New</a>
+                        @else
+                            <a href="{{ route('blog.index') }}" class="btn btn-sm btn-primary mr-2">Add
+                                New</a>
                         @endif
                         <!-- End - Add new blog -->
 
