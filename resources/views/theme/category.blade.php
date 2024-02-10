@@ -28,7 +28,7 @@
                                             </ul>
                                         </div>
                                         <div class="details mt-20">
-                                            <a href="blog-single.html">
+                                            <a href="{{ route('blog.show', ['blog' => $blog]) }}">
                                                 <h3>{{ $blog->title }}</h3>
                                             </a>
                                             <p>{{ $blog->description }}</p>

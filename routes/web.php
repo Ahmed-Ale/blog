@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\ThemeController;
+use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/my-blogs', [BlogController::class, 'myBlogs'])->name('blogs.myBlogs');
+
 Route::resource('/blog', BlogController::class);
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

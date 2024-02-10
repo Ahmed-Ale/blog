@@ -58,7 +58,7 @@
                                         role="button" aria-haspopup="true"
                                         aria-expanded="false">{{ Auth::user()->name }}</a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link" href="blog-details.html">My Blogs</a>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('blogs.myBlogs') }}">My Blogs</a>
                                         </li>
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf

@@ -52,8 +52,17 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('theme.single-blog',compact('blog'));
+        return view('theme.single-blog', compact('blog'));
     }
+
+
+    public function myBlogs()
+    {
+        $id = Auth::user()->id;
+        $blogs = Blog::where('user_id', $id)->paginate(6);
+        return view('theme.myBlogs', compact('blogs'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
