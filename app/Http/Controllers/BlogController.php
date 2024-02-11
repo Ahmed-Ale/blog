@@ -92,9 +92,6 @@ class BlogController extends Controller
     {
         // dd($request->all());
 
-        if (Auth::user()->id != $blog->user_id) {
-            abort(403);
-        }
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
@@ -116,6 +113,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        Storage::delete("public/blogs/$blog->image");
+        $blog->delete();
+
+        return back()->with('blogDeleteSuccess', "Blog Deleted Successfully!");
     }
 }

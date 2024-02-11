@@ -12,6 +12,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    @if (session('blogDeleteSuccess'))
+                        <div class="alert alert-success">
+                            {{ session('blogDeleteSuccess') }}
+                        </div>
+                    @endif
                     <div class="row">
                         @if (isset($blogs))
                             @foreach ($blogs as $blog)
@@ -34,11 +39,20 @@
                                             <a class="button" href="{{ route('blog.show', ['blog' => $blog]) }}">Read More
                                                 <i class="ti-arrow-right"></i></a>
 
-                                            <a href="{{ route('blog.edit', $blog) }}"
+                                            <a href="{{ route('blog.edit', ['blog' => $blog]) }}"
                                                 class="btn btn-sm btn-primary m-2 pr-2 pl-2">Edit</a>
 
-                                            <a href="{{ route('blog.destroy', $blog) }}"
-                                                class="btn btn-sm btn-danger mr-2">Delete</a>
+                                            <form action="{{ route('blog.destroy', ['blog' => $blog]) }}" method="POST"
+                                                class="d-inline" id="delete_form">
+                                                @method('DELETE')
+                                                @csrf
+                                                {{-- <button type="submit" onclick="return confirm('Are you sure?')> --}}
+                                                {{-- <a class="btn btn-sm btn-danger mr-2"
+                                                    href="javascript:$('form#delete_form').submit();">Delete</a> --}}
+                                                <button type="submit" class="btn btn-sm btn-danger mr-2"
+                                                    >Delete</button>
+                                            </form>
+
 
                                             {{-- <button type="button" class="btn btn-warning"
                                                 href="{{ route('blog.edit', $blog) }}">Edit</button>
