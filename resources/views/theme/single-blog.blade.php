@@ -15,7 +15,7 @@
                 <div class="col-lg-8">
                     <div class="main_blog_details">
                         <img class="img-fluid" src="{{ asset("storage/blogs/$blog->image") }}" alt="">
-                        <a href="#">
+                        <a>
                             <h4>{{ $blog->title }}</h4>
                         </a>
                         <div class="user_details">
@@ -36,24 +36,31 @@
                     </div>
 
                     <div class="comments-area">
-                        <h4>05 Comments</h4>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="{{ asset('assets/img') }}/avatar.png" width="50px">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a></h5>
-                                        <p class="date">December 4, 2017 at 3:12 pm </p>
-                                        <p class="comment">
-                                            Never say goodbye till the end comes!
-                                        </p>
+                        @if (count($blog->comments) > 0)
+                            <h4>{{ str_pad(count($blog->comments), 2, STR_PAD_LEFT, '0') }} Comments</h4>
+                            @foreach ($blog->comments as $comment)
+                                <div class="comment-list">
+                                    <div class="single-comment justify-content-between d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <div class="thumb">
+                                                <img src="{{ asset('assets/img') }}/avatar.png" width="50px">
+                                            </div>
+                                            <div class="desc">
+                                                <h5><a href="#">{{ $comment->name }}</a></h5>
+                                                <p class="date">{{ $comment->created_at->format('F j, Y \A\T g:i A') }}
+                                                </p>
+                                                <p class="comment">
+                                                    {{ $comment->message }}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
+                            @endforeach
+                        @else
+                            <h4>No Comments Yet</h4>
+                        @endif
+                        {{-- <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="user justify-content-between d-flex">
                                     <div class="thumb">
@@ -84,32 +91,61 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>
-                        <form>
+                        @if (session('commentSuccess'))
+                            <div class="alert alert-success">
+                                {{ session('commentSuccess') }}
+                            </div>
+                        @endif
+                        <form action="{{ route('comment') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                             <div class="form-group form-inline">
                                 <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter Name" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter Name'" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="alert alert-danger p-1">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email"
+                                    <input type="email" class="form-control" id="email" name="email"
                                         placeholder="Enter email address" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email address'">
+                                        onblur="this.placeholder = 'Enter email address'" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="alert alert-danger p-1">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
+                                    name="subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'"
+                                    value="{{ old('subject') }}">
+                                @error('subject')
+                                    <div class="alert alert-danger p-1">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                    onblur="this.placeholder = 'Messege'" required="">{{ old('email') }}</textarea>
+                                @error('message')
+                                    <div class="alert alert-danger p-1">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            <a href="#" class="button submit_btn">Post Comment</a>
+                            <button type="submit" class="button submit_btn">Post Comment</button>
                         </form>
                     </div>
                 </div>

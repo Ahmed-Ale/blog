@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscriberController;
@@ -35,6 +36,7 @@ Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscri
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
+Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 
 
 // Route::get('/', function () {
