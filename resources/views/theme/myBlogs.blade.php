@@ -33,6 +33,16 @@
                                             <p>{{ $blog->description }}</p>
                                             <a class="button" href="{{ route('blog.show', ['blog' => $blog]) }}">Read More
                                                 <i class="ti-arrow-right"></i></a>
+
+                                            <a href="{{ route('blog.edit', $blog) }}"
+                                                class="btn btn-sm btn-primary m-2 pr-2 pl-2">Edit</a>
+
+                                            <a href="{{ route('blog.destroy', $blog) }}"
+                                                class="btn btn-sm btn-danger mr-2">Delete</a>
+
+                                            {{-- <button type="button" class="btn btn-warning"
+                                                href="{{ route('blog.edit', $blog) }}">Edit</button>
+                                            <button type="button" class="btn btn-danger">Delete</button> --}}
                                         </div>
                                     </div>
                                 </div>

@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\AuthorizeBlogOwner;
 use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+
+    public  function __construct()
+    {
+        $this->middleware('blog.owner')->only(["edit", "update", "destroy"]);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -58,9 +68,12 @@ class BlogController extends Controller
 
     public function myBlogs()
     {
-        $id = Auth::user()->id;
-        $blogs = Blog::where('user_id', $id)->paginate(6);
-        return view('theme.myBlogs', compact('blogs'));
+        if (Auth::check()) {
+            $id = Auth::user()->id;
+            $blogs = Blog::where('user_id', $id)->paginate(6);
+            return view('theme.myBlogs', compact('blogs'));
+        }
+        abort(403);
     }
 
 
@@ -69,15 +82,33 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('theme.blogs.edit', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        // dd($request->all());
+
+        if (Auth::user()->id != $blog->user_id) {
+            abort(403);
+        }
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            Storage::delete("public/blogs/$blog->image");
+
+            $image = $request->image;
+            $imgName = time() . '-' . $image->getClientOriginalName();
+            $image->storeAs('blogs', $imgName, 'public');
+            $data['image'] = $imgName;
+        }
+
+        $blog->update($data);
+
+        return back()->with('blogUpdateSuccess', 'Blog Updated Successfully!');
     }
 
     /**
