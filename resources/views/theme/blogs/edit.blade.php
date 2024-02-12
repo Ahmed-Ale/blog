@@ -40,7 +40,6 @@
                                 <option value="">Select Category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
-                                        {{-- @if ($category->id == $blog->category_id) selected @endif --}}
                                         @selected($category->id == $blog->category_id) >
                                         {{ $category->name }}
                                     </option>

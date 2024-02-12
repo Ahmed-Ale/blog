@@ -35,87 +35,37 @@
                                             <a href="{{ route('theme.category', ['name' => $category->name]) }}"
                                                 class="d-flex justify-content-between">
                                                 <p>{{ $category->name }}</p>
-                                                <p>{{ $category->blogs_count }}</p>
+                                                <p>({{ str_pad($category->blogs_count, 2, STR_PAD_LEFT, '0') }})</p>
                                             </a>
                                         </li>
                                     @endforeach
-                                    {{-- <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Software</p>
-                                            <p>(09)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Lifestyle</p>
-                                            <p>(12)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Shopping</p>
-                                            <p>(02)</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="d-flex justify-content-between">
-                                            <p>Food</p>
-                                            <p>(10)</p>
-                                        </a>
-                                    </li> --}}
                                 </ul>
                             </div>
 
                             <div class="single-sidebar-widget popular-post-widget">
-                                <h4 class="single-sidebar-widget__title">Recent Post</h4>
+                                <h4 class="single-sidebar-widget__title">Recent Blogs</h4>
                                 <div class="popular-post-list">
-                                    <div class="single-post-list">
-                                        <div class="thumb">
-                                            <img class="card-img rounded-0"
-                                                src="{{ asset('assets/img') }}/blog/thumb/thumb1.png" alt="">
-                                            <ul class="thumb-info">
-                                                <li><a href="#">Adam Colinge</a></li>
-                                                <li><a href="#">Dec 15</a></li>
-                                            </ul>
+                                    @foreach ($recentSidebarBlogs as $blog)
+                                        <div class="single-post-list">
+                                            <div class="thumb">
+                                                <img class="card-img rounded-0"
+                                                    src="{{ asset("storage/blogs/$blog->image") }}" alt="">
+                                                <ul class="thumb-info">
+                                                    <li><a
+                                                            href="{{ route('blog.show', $blog) }}">{{ $blog->user->name }}</a>
+                                                    </li>
+                                                    <li><a
+                                                            href="{{ route('blog.show', $blog) }}">{{ $blog->created_at->format('M d') }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="details mt-20">
+                                                <a href="{{ route('blog.show', $blog) }}">
+                                                    <h6>{{ $blog->title }}</h6>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="details mt-20">
-                                            <a href="blog-single.html">
-                                                <h6>Accused of assaulting flight attendant miktake alaways</h6>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list">
-                                        <div class="thumb">
-                                            <img class="card-img rounded-0"
-                                                src="{{ asset('assets/img') }}/blog/thumb/thumb2.png" alt="">
-                                            <ul class="thumb-info">
-                                                <li><a href="#">Adam Colinge</a></li>
-                                                <li><a href="#">Dec 15</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="details mt-20">
-                                            <a href="blog-single.html">
-                                                <h6>Tennessee outback steakhouse the
-                                                    worker diagnosed</h6>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="single-post-list">
-                                        <div class="thumb">
-                                            <img class="card-img rounded-0"
-                                                src="{{ asset('assets/img') }}/blog/thumb/thumb3.png" alt="">
-                                            <ul class="thumb-info">
-                                                <li><a href="#">Adam Colinge</a></li>
-                                                <li><a href="#">Dec 15</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="details mt-20">
-                                            <a href="blog-single.html">
-                                                <h6>Tennessee outback steakhouse the
-                                                    worker diagnosed</h6>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

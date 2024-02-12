@@ -28,10 +28,6 @@
                                                 href="{{ route('theme.category', ['name' => $category->name]) }}">{{ $category->name }}</a>
                                         </li>
                                     @endforeach
-                                    {{-- <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Bussiness</a></li>
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ route('theme.category') }}">Travel</a></li> --}}
                                 </ul>
                             </li>
                             <li class="nav-item @yield('contact-active')"><a class="nav-link"
@@ -65,7 +61,6 @@
                                             @csrf
                                             <li class="nav-item">
                                                 <a class="nav-link" href="javascript:$('form#logout_form').submit()"
-                                                    {{-- onclick="event.preventDefault(); this.closest('form').submit();" --}}
                                                     >Logout</a>
                                             </li>
                                         </form>

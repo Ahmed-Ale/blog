@@ -26,7 +26,6 @@ Route::controller(ThemeController::class)->name('theme.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/contact', 'contact')->name('contact');
     Route::get('/category/{name}', 'category')->name('category');
-    // Route::get('/single-blog/{id}', 'singleBlog')->name('singleBlog');
 });
 Route::get('/master', function () {
     return view('theme.master');
@@ -49,7 +48,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/my-blogs', [BlogController::class, 'myBlogs'])->name('blogs.myBlogs');
 
-Route::resource('/blog', BlogController::class);
+Route::resource('/blog', BlogController::class)->except('index');
 
 Route::middleware('auth')->group(function () {
 

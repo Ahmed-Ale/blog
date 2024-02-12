@@ -6,9 +6,6 @@ use App\Http\Middleware\AuthorizeBlogOwner;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
-use App\Models\Comment;
-use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,14 +15,6 @@ class BlogController extends Controller
     public  function __construct()
     {
         $this->middleware('blog.owner')->only(["edit", "update", "destroy"]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
     }
 
     /**
