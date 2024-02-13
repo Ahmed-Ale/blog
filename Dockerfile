@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --ignore-platform-reqs
+RUN composer install
 RUN npm ci
 
 EXPOSE 80
