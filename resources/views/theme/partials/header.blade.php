@@ -50,12 +50,10 @@
                                     Login</a>
                             @else
                                 <li class="nav-item submenu dropdown">
-                                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
                                         role="button" aria-haspopup="true"
                                         aria-expanded="false">{{ Auth::user()->name }}</a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">Profile</a>
-                                        </li>
                                         <li class="nav-item"><a class="nav-link" href="{{ route('blogs.myBlogs') }}">My
                                                 Blogs</a>
                                         </li>

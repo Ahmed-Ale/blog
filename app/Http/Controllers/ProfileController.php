@@ -14,13 +14,11 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(): View
+    public function edit(Request $request): View
     {
-        $user = Auth::user();
-        return view('theme.profile', ['user' => $user]);
-        // return view('profile.edit', [
-        //     'user' => $request->user(),
-        // ]);
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
     }
 
     /**

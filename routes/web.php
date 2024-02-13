@@ -38,9 +38,9 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 Route::post('/comment', [CommentController::class, 'store'])->name('comment');
 
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
