@@ -30,18 +30,14 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        // dd($request->all());
-
         $blog = $request->validated();
 
         $image = $request->image;
-
         $imgName = time() . '-' . $image->getClientOriginalName();
         $image->storeAs('blogs', $imgName, 'public');
 
         $blog['image'] = $imgName;
         $blog['user_id'] = Auth::user()->id;
-
         Blog::create($blog);
 
         return back()->with('blogSuccess', 'Blog Created Successfully!');
@@ -52,7 +48,6 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        // $comments = Comment::where('blog_id', $blog->id)->get();
         return view('theme.single-blog', compact('blog'));
     }
 
@@ -60,8 +55,7 @@ class BlogController extends Controller
     public function myBlogs()
     {
         if (Auth::check()) {
-            $id = Auth::user()->id;
-            $blogs = Blog::where('user_id', $id)->paginate(6);
+            $blogs = Blog::with('user', 'comments')->where('user_id', Auth::id())->paginate(6);
             return view('theme.myBlogs', compact('blogs'));
         }
         abort(403);
@@ -81,8 +75,6 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        // dd($request->all());
-
         $data = $request->validated();
 
         if ($request->hasFile('image')) {

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommentRequest;
 use App\Models\Comment;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -13,7 +12,6 @@ class CommentController extends Controller
         $comment = $request->validated();
 
         Comment::create($comment);
-
 
         return back()->with('commentSuccess', 'Comment Posted Successfully!');
     }

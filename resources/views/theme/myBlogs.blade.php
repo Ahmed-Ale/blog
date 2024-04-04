@@ -26,9 +26,12 @@
                                             <img class="card-img rounded-0" src="{{ asset("storage/blogs/{$blog->image}") }}"
                                                 alt="{{ $blog->title }}">
                                             <ul class="thumb-info">
-                                                <li><a href="#"><i class="ti-user"></i>{{ $blog->user->name }}</a>
+                                                <li><a href="{{ route('blog.show', ['blog' => $blog]) }}"><i
+                                                            class="ti-user"></i>{{ $blog->user->name }}</a>
                                                 </li>
-                                                <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                                                <li><a href="{{ route('blog.show', ['blog' => $blog]) }}"><i
+                                                            class="ti-themify-favicon"></i>{{ count($blog->comments) }}
+                                                        Comments</a></li>
                                             </ul>
                                         </div>
                                         <div class="details mt-20">
@@ -46,17 +49,8 @@
                                                 class="d-inline" id="delete_form">
                                                 @method('DELETE')
                                                 @csrf
-                                                {{-- <button type="submit" onclick="return confirm('Are you sure?')> --}}
-                                                {{-- <a class="btn btn-sm btn-danger mr-2"
-                                                    href="javascript:$('form#delete_form').submit();">Delete</a> --}}
-                                                <button type="submit" class="btn btn-sm btn-danger mr-2"
-                                                    >Delete</button>
+                                                <button type="submit" class="btn btn-sm btn-danger mr-2">Delete</button>
                                             </form>
-
-
-                                            {{-- <button type="button" class="btn btn-warning"
-                                                href="{{ route('blog.edit', $blog) }}">Edit</button>
-                                            <button type="button" class="btn btn-danger">Delete</button> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +69,6 @@
                     @endif
                 </div>
 
-                {{-- @include('theme.partials.sidebar') --}}
             </div>
     </section>
     <!--================ End Blog Post Area =================-->
